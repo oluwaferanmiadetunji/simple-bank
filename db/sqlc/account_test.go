@@ -13,8 +13,10 @@ import (
 // The function creates a random test account and performs various assertions to ensure its
 // correctness.
 func createRandomTestAccount(t *testing.T) Account {
+	user := createRandomTestUser(t)
+
 	arg := CreateAccountParams{
-		Owner:    util.RandomOwner(),
+		Owner:    user.Username,
 		Balance:  util.RandomMoney(),
 		Currency: util.RandomCurrency(),
 	}

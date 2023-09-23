@@ -34,5 +34,7 @@ server:
 mock:
 	mockgen --build_flags=--mod=mod -package=mockdb -destination db/mock/store.go github.com/oluwaferanmiadetunji/simple_bank/db/sqlc Store
 
+build:
+	go build -o ./tmp/main .
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc install test server mock migrateup1 migratedown1
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc install test server mock migrateup1 migratedown1 build
