@@ -2,15 +2,15 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	database "github.com/oluwaferanmiadetunji/simple_bank/internal/database"
+	db "github.com/oluwaferanmiadetunji/simple_bank/db/sqlc"
 )
 
 type Server struct {
-	store  *database.Store
+	store  db.Store
 	router *gin.Engine
 }
 
-func NewServer(store *database.Store) *Server {
+func NewServer(store db.Store) *Server {
 	server := &Server{store: store}
 	router := gin.Default()
 

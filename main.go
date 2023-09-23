@@ -4,9 +4,10 @@ import (
 	"database/sql"
 	"log"
 
+	_ "github.com/golang/mock/mockgen/model"
 	_ "github.com/lib/pq"
 	"github.com/oluwaferanmiadetunji/simple_bank/api"
-	"github.com/oluwaferanmiadetunji/simple_bank/internal/database"
+	db "github.com/oluwaferanmiadetunji/simple_bank/db/sqlc"
 	"github.com/oluwaferanmiadetunji/simple_bank/util"
 )
 
@@ -23,7 +24,7 @@ func main() {
 		log.Fatal("cannot connect to db: ", err)
 	}
 
-	store := database.NewStore(conn)
+	store := db.NewStore(conn)
 	server := api.NewServer(store)
 
 	err = server.Start(config.ServerAddress)
