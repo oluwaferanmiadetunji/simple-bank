@@ -75,7 +75,7 @@ func TestGetAccountAPI(t *testing.T) {
 				store.EXPECT().GetAccount(gomock.Any(), gomock.Any()).Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
-				require.Equal(t, http.StatusBadRequest , recorder.Code)
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
 
 			},
 		},
@@ -92,7 +92,7 @@ func TestGetAccountAPI(t *testing.T) {
 			store := mockdb.NewMockStore(ctrl)
 			tc.buildStubs(store)
 
-			server := NewServer(store)
+			server := newTestServer(t, store)
 
 			recorder := httptest.NewRecorder()
 
